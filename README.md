@@ -2,7 +2,21 @@
 
 CSVダウンロード機能実装時に考慮しておくべきことを検討するためのサンプル
 
+## 環境
+
+- php: 8.3.13
+- DB: sqlite
+
 ## 使い方
+
+- リポジトリをクローンする
+- `composer install` でライブラリをインストールする
+- `php artisan migrate` で DB マイグレーションする
+- `php artisan db:seed` でサンプルデータを作成する
+- `php artisan serve` で App サーバを起動する
+- `http://localhost:8000/` にアクセスする
+  - ダウンロード機能は `http://localhost:8000/users/download` にアクセスする
+    - 画面はないがダウンロード処理が実行され、CSVをダウンロードできる
 
 ## 考慮しておくべきこと
 
