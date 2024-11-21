@@ -2,8 +2,8 @@
 
 namespace Packages\Project\Infra\Query;
 
-use App\Models\Project;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ProjectListQuery
 {
@@ -12,8 +12,16 @@ class ProjectListQuery
      */
     public function get(): Collection
     {
-        return Project::query()
-            ->limit(2)
+        return DB::table('projects')
+            ->select([
+                'projects.*',
+                DB::raw(
+                    'GROUP_CONCAT(CONCAT(tasks.id, ",", tasks.name, ",", tasks.description) ORDER BY tasks.id, ",") as tasks'
+                ),
+            ])
+            ->leftJoin('tasks', 'projects.id', '=', 'tasks.project_id')
+            ->groupBy('projects.id')
+            ->limit(10000)
             ->get();
     }
 }

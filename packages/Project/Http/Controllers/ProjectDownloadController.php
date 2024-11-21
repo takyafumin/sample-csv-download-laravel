@@ -15,7 +15,7 @@ class ProjectDownloadController extends Controller
      *
      * @var string[]
      */
-    private const CSV_HEADER = ['id', 'name', 'email', 'created_at', 'updated_at'];
+    private const CSV_HEADER = ['id', 'name', 'description', 'created_at', 'updated_at', 'tasks'];
 
     /**
      * CSVファイル名
@@ -29,7 +29,7 @@ class ProjectDownloadController extends Controller
     ) {}
 
     /**
-     * ユーザーデータをCSVでダウンロード
+     * プロジェクトデータをCSVでダウンロード
      */
     public function __invoke(): \Symfony\Component\HttpFoundation\BinaryFileResponse
     {
@@ -66,7 +66,7 @@ class ProjectDownloadController extends Controller
 
         // CSVデータを書き込む
         foreach ($csvData as $row) {
-            fputcsv($handle, $row);
+            fputcsv($handle, (array) $row);
         }
 
         // ファイルハンドルを閉じる
