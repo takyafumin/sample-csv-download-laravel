@@ -17,8 +17,18 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 - `php artisan ide-helper:generate` で開発用ヘルパーファイルを生成する
 - `php artisan serve` で App サーバを起動する
 - `http://localhost:8000/` にアクセスする
-  - ダウンロード機能は `http://localhost:8000/users/download` にアクセスする
-    - 画面はないがダウンロード処理が実行され、CSVをダウンロードできる
+
+### ダウンロード機能
+
+#### ユーザー
+
+-  `http://localhost:8000/users/download` にアクセスする
+  - 画面はないがダウンロード処理が実行され、CSVをダウンロードできる
+
+#### プロジェクト
+
+-  `http://localhost:8000/projects/download` にアクセスする
+  - 画面はないがダウンロード処理が実行され、CSVをダウンロードできる
 
 ## 考慮しておくべきこと
 
