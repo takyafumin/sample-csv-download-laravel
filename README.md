@@ -14,6 +14,7 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 - `.env.example` をコピーして `.env` ファイルを作成する
 - `php artisan migrate` で DB マイグレーションする
 - `php artisan db:seed` でサンプルデータを作成する
+- `php artisan ide-helper:generate` で開発用ヘルパーファイルを生成する
 - `php artisan serve` で App サーバを起動する
 - `http://localhost:8000/` にアクセスする
   - ダウンロード機能は `http://localhost:8000/users/download` にアクセスする

@@ -10,9 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class UserDownloadUsecase
 {
-    /**
-     * @param User $userModel
-     */
     public function __construct(
         private User $userModel
     ) {}
