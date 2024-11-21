@@ -2,6 +2,7 @@
 
 namespace Packages\Project\Infra\Query;
 
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +13,12 @@ class ProjectListQuery
      */
     public function get(): Collection
     {
+        return $this->query()
+            ->get();
+    }
+
+    public function query(): Builder
+    {
         return DB::table('projects')
             ->select([
                 'projects.*',
@@ -21,6 +28,6 @@ class ProjectListQuery
             ])
             ->leftJoin('tasks', 'projects.id', '=', 'tasks.project_id')
             ->groupBy('projects.id')
-            ->get();
+            ->orderBy('projects.id');
     }
 }
