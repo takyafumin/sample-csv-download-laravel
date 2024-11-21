@@ -21,7 +21,6 @@ class ProjectListQuery
             ])
             ->leftJoin('tasks', 'projects.id', '=', 'tasks.project_id')
             ->groupBy('projects.id')
-            ->limit(10000)
             ->get();
     }
 }
