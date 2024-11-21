@@ -11,6 +11,7 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 
 - リポジトリをクローンする
 - `composer install` でライブラリをインストールする
+- `.env.example` をコピーして `.env` ファイルを作成する
 - `php artisan migrate` で DB マイグレーションする
 - `php artisan db:seed` でサンプルデータを作成する
 - `php artisan serve` で App サーバを起動する
