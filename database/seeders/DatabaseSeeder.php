@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Create a test user
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // User::factory(99)->create();
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+        User::factory(99)->create();
 
         // Create Projects and Tasks
         Project::factory(10000)
