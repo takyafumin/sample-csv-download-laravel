@@ -39,9 +39,11 @@ class ProjectsExportWithLogic implements FromCollection, WithHeadings
                     $project->description,
                     $project->created_at,
                     $project->updated_at,
-                    $project->task_id,
-                    $project->task_name,
-                    $project->task_description,
+                    [
+                        $project->task_id,
+                        $project->task_name,
+                        $project->task_description,
+                    ]
                 );
                 $list->push($csvRow);
             } else {

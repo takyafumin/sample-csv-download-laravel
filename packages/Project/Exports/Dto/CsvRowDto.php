@@ -26,15 +26,9 @@ class CsvRowDto implements Arrayable
         public readonly string $description,
         public readonly string $created_at,
         public readonly string $updated_at,
-        string $task_id,
-        string $task_name,
-        string $task_description,
+        array $tasks,
     ) {
-        $this->tasks[] = [
-            'id' => $task_id,
-            'name' => $task_name,
-            'description' => $task_description,
-        ];
+        $this->tasks = $tasks;
     }
 
     /**

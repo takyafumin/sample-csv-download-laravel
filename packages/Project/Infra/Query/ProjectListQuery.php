@@ -7,6 +7,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\LazyCollection;
 
+/**
+ * プロジェクト一覧取得クエリ
+ */
 class ProjectListQuery
 {
     /**

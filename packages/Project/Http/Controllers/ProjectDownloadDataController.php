@@ -19,10 +19,7 @@ class ProjectDownloadDataController extends Controller
      */
     public function __invoke()
     {
-        // プロジェクトデータ取得
-        $projects = $this->usecase->exec();
-
         // レスポンス
-        return response()->view('projects.data', ['projects' => $projects]);
+        return response()->view('projects.data');
     }
 }

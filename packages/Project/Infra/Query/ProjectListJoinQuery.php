@@ -7,19 +7,21 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\LazyCollection;
 
+/**
+ * プロジェクト一覧取得クエリ（JOIN）
+ */
 class ProjectListJoinQuery
 {
-    /**
-     * Get the list of projects with their tasks.
-     */
     public function get(): Collection
     {
         return $this->query()->get();
     }
 
-    public function lazy(): LazyCollection
+    public function cursor(): LazyCollection
     {
-        return $this->query()->lazy();
+        return LazyCollection::make(function () {
+            yield from $this->query()->cursor();
+        });
     }
 
     public function query(): Builder

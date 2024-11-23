@@ -20,15 +20,16 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 
 ### ダウンロード機能
 
-|          URL          |           機能           |                                    説明                                     |
-| --------------------- | ------------------------ | --------------------------------------------------------------------------- |
-| `/users/download`     | ユーザーダウンロード     | ユーザーデータをCSVでダウンロードする                                       |
-| `/projects/data`      | プロジェクトダウンロード | プロジェクトデータを取得するがOKレスポンスだけを返す                        |
-| `/projects/download`  | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする                                   |
-| `/projects/export`    | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export)                   |
-| `/projects/chunk`     | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Chunk)        |
-| `/projects/generator` | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Generator)    |
-| `/projects/logic`     | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Custom Logic) |
+|            URL             |           機能           |                                    説明                                     |
+| -------------------------- | ------------------------ | --------------------------------------------------------------------------- |
+| `/users/download`          | ユーザーダウンロード     | ユーザーデータをCSVでダウンロードする                                       |
+| `/projects/data`           | プロジェクトダウンロード | プロジェクトデータを取得するがOKレスポンスだけを返す                        |
+| `/projects/download`       | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする                                   |
+| `/projects/download/logic` | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(LazyCollectionで編集処理をする)   |
+| `/projects/export`         | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export)                   |
+| `/projects/chunk`          | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Chunk)        |
+| `/projects/generator`      | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Generator)    |
+| `/projects/logic`          | プロジェクトダウンロード | プロジェクトデータをCSVでダウンロードする(Laravel Export with Custom Logic) |
 
 ## 考慮しておくべきこと
 
