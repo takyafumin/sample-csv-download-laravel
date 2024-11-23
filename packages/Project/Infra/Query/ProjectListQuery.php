@@ -4,6 +4,7 @@ namespace Packages\Project\Infra\Query;
 
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Facades\DB;
 
 class ProjectListQuery
@@ -13,8 +14,12 @@ class ProjectListQuery
      */
     public function get(): Collection
     {
-        return $this->query()
-            ->get();
+        return $this->query()->get();
+    }
+
+    public function lazy(): LazyCollection
+    {
+        return $this->query()->lazy();
     }
 
     public function query(): Builder

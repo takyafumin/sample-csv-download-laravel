@@ -17,7 +17,7 @@ class ProjectsExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return $this->projectListQuery->get();
+        return $this->projectListQuery->get()->lazy();
     }
 
     public function headings(): array

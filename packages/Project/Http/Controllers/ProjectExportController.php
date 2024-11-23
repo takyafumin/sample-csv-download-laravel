@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Packages\Project\Exports\ProjectsExport;
 use Packages\Project\Exports\ProjectsExportWithChunk;
+use Packages\Project\Exports\ProjectsExportWithGenerator;
 use Packages\Project\Infra\Query\ProjectListQuery;
 
 class ProjectExportController extends Controller
@@ -29,6 +30,19 @@ class ProjectExportController extends Controller
 
         return Excel::download(
             new ProjectsExportWithChunk($projectListQuery),
+            'projects.csv',
+            \Maatwebsite\Excel\Excel::CSV
+        );
+    }
+
+    public function generator()
+    {
+        $projectListQuery = new ProjectListQuery;
+
+        ini_set('memory_limit', '512M');
+
+        return Excel::download(
+            new ProjectsExportWithGenerator($projectListQuery),
             'projects.csv',
             \Maatwebsite\Excel\Excel::CSV
         );
