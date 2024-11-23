@@ -10,8 +10,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users/download', UserDownloadController::class);
-Route::get('/projects/download', ProjectDownloadController::class);
-Route::get('/projects/data', ProjectDownloadDataController::class);
-Route::get('/projects/export', [ProjectExportController::class, 'export']);
-Route::get('/projects/chunk', [ProjectExportController::class, 'chunk']);
+Route::get('/users/download', UserDownloadController::class)->name('users.download');
+Route::get('/projects/download', ProjectDownloadController::class)->name('projects.download');
+Route::get('/projects/data', ProjectDownloadDataController::class)->name('projects.data');
+Route::get('/projects/export', [ProjectExportController::class, 'export'])->name('projects.export');
+Route::get('/projects/chunk', [ProjectExportController::class, 'chunk'])->name('projects.chunk');

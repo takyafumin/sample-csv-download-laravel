@@ -23,6 +23,6 @@ class ProjectDownloadDataController extends Controller
         $projects = $this->usecase->exec();
 
         // レスポンス
-        return response('OK', 200);
+        return response()->view('projects.data', ['projects' => $projects]);
     }
 }
