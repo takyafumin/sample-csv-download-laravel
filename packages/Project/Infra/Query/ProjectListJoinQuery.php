@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\LazyCollection;
 
-class ProjectListQuery
+class ProjectListJoinQuery
 {
     /**
      * Get the list of projects with their tasks.
@@ -27,12 +27,12 @@ class ProjectListQuery
         return DB::table('projects')
             ->select([
                 'projects.*',
-                DB::raw(
-                    'GROUP_CONCAT(CONCAT(tasks.id, ",", tasks.name, ",", tasks.description) ORDER BY tasks.id, ",") as tasks'
-                ),
+                'tasks.id as task_id',
+                'tasks.name as task_name',
+                'tasks.description as task_description',
             ])
             ->leftJoin('tasks', 'projects.id', '=', 'tasks.project_id')
-            ->groupBy('projects.id')
-            ->orderBy('projects.id');
+            ->orderBy('projects.id')
+            ->orderBy('task_id');
     }
 }

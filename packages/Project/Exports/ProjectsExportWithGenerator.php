@@ -14,10 +14,10 @@ class ProjectsExportWithGenerator implements FromGenerator, WithHeadings
     ) {}
 
     /**
-     * @return Generator
      * @description use 203MB!!
      */
-    public function generator(): Generator {
+    public function generator(): Generator
+    {
         $projects = $this->projectListQuery->get();
         foreach ($projects as $project) {
             $project->tasks = explode(',', $project->tasks);

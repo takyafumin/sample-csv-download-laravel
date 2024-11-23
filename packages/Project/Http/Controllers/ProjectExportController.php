@@ -7,16 +7,16 @@ use Maatwebsite\Excel\Facades\Excel;
 use Packages\Project\Exports\ProjectsExport;
 use Packages\Project\Exports\ProjectsExportWithChunk;
 use Packages\Project\Exports\ProjectsExportWithGenerator;
+use Packages\Project\Exports\ProjectsExportWithLogic;
+use Packages\Project\Infra\Query\ProjectListJoinQuery;
 use Packages\Project\Infra\Query\ProjectListQuery;
 
 class ProjectExportController extends Controller
 {
     public function export()
     {
-        $projectListQuery = new ProjectListQuery;
-
         return Excel::download(
-            new ProjectsExport($projectListQuery),
+            new ProjectsExport(new ProjectListQuery),
             'projects.csv',
             \Maatwebsite\Excel\Excel::CSV
         );
@@ -24,12 +24,10 @@ class ProjectExportController extends Controller
 
     public function chunk()
     {
-        $projectListQuery = new ProjectListQuery;
-
         ini_set('memory_limit', '512M');
 
         return Excel::download(
-            new ProjectsExportWithChunk($projectListQuery),
+            new ProjectsExportWithChunk(new ProjectListQuery),
             'projects.csv',
             \Maatwebsite\Excel\Excel::CSV
         );
@@ -37,12 +35,21 @@ class ProjectExportController extends Controller
 
     public function generator()
     {
-        $projectListQuery = new ProjectListQuery;
-
         ini_set('memory_limit', '512M');
 
         return Excel::download(
-            new ProjectsExportWithGenerator($projectListQuery),
+            new ProjectsExportWithGenerator(new ProjectListQuery),
+            'projects.csv',
+            \Maatwebsite\Excel\Excel::CSV
+        );
+    }
+
+    public function logic()
+    {
+        ini_set('memory_limit', '512M');
+
+        return Excel::download(
+            new ProjectsExportWithLogic(new ProjectListJoinQuery),
             'projects.csv',
             \Maatwebsite\Excel\Excel::CSV
         );

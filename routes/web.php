@@ -16,3 +16,4 @@ Route::get('/projects/data', ProjectDownloadDataController::class)->name('projec
 Route::get('/projects/export', [ProjectExportController::class, 'export'])->name('projects.export');
 Route::get('/projects/chunk', [ProjectExportController::class, 'chunk'])->name('projects.chunk');
 Route::get('/projects/generator', [ProjectExportController::class, 'generator'])->name('projects.generator');
+Route::get('/projects/logic', [ProjectExportController::class, 'logic'])->name('projects.logic');
