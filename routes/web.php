@@ -12,6 +12,7 @@ Route::get('/', function () {
 
 Route::get('/users/download', UserDownloadController::class)->name('users.download');
 Route::get('/projects/download', [ProjectDownloadController::class, 'download'])->name('projects.download');
+Route::get('/projects/download/lazy', [ProjectDownloadController::class, 'lazy'])->name('projects.download.lazy');
 Route::get('/projects/download/logic', [ProjectDownloadController::class, 'logic'])->name('projects.download.logic');
 Route::get('/projects/data', ProjectDownloadDataController::class)->name('projects.data');
 Route::get('/projects/export', [ProjectExportController::class, 'export'])->name('projects.export');

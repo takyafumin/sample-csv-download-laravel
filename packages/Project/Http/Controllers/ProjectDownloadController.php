@@ -53,6 +53,25 @@ class ProjectDownloadController extends Controller
     }
 
     /**
+     * プロジェクトデータをCSVでダウンロード
+     */
+    public function lazy(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        // プロジェクトデータ取得
+        $projects = $this->usecase->lazy();
+
+        // ダウンロード用一時ファイル作成
+        $tempFile = $this->fileDownload->createDownloadFileWithLazyCollection(self::CSV_HEADER, $projects);
+
+        // ファイルをストリームで返す
+        return response()
+            ->download($tempFile, self::CSV_FILENAME, [
+                'Content-Type' => 'text/csv',
+                'Content-Disposition' => 'attachment; filename="'.self::CSV_FILENAME.'"',
+            ])
+            ->deleteFileAfterSend(true);
+    }
+    /**
      * プロジェクトデータをCSVでダウンロード（Cursor）
      */
     public function logic(): \Symfony\Component\HttpFoundation\BinaryFileResponse
