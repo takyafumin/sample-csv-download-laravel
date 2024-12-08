@@ -14,5 +14,10 @@
         <li><a href="{{ route('projects.generator') }}">generator</a></li>
         <li><a href="{{ route('projects.logic') }}">logic</a></li>
     </ul>
+    <hr/>
+    <ul>
+        <li><a href="{{ route('project-export.cursor') }}">project-export.cursor</a></li>
+    </ul>
+
 </body>
 </html>
