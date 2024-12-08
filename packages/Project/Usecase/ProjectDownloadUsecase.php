@@ -2,8 +2,9 @@
 
 namespace Packages\Project\Usecase;
 
-use App\Models\Project;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
+use Packages\Project\Exports\Dto\CsvRowDto;
 use Packages\Project\Infra\Query\ProjectListQuery;
 
 /**
@@ -22,5 +23,25 @@ class ProjectDownloadUsecase
     {
         // プロジェクトデータ取得（タスクを含む）
         return $this->projectListQuery->get();
+    }
+
+    public function lazy(): LazyCollection
+    {
+        // プロジェクトデータ取得（タスクを含む）
+        return $this->projectListQuery->lazy()
+            ->map(function ($project) {
+                $taskItems = collect(explode(',', $project->tasks))
+                    ->chunk(3)
+                    ->toArray();
+
+                return new CsvRowDto(
+                    $project->id,
+                    $project->name,
+                    $project->description,
+                    $project->created_at,
+                    $project->updated_at,
+                    $taskItems
+                );
+            });
     }
 }

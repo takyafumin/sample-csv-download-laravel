@@ -8,21 +8,20 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\LazyCollection;
 
 /**
- * プロジェクト一覧取得クエリ
+ * プロジェクト一覧取得クエリ（JOIN）
  */
-class ProjectListQuery
+class ProjectListJoinQuery
 {
-    /**
-     * Get the list of projects with their tasks.
-     */
     public function get(): Collection
     {
         return $this->query()->get();
     }
 
-    public function lazy(): LazyCollection
+    public function cursor(): LazyCollection
     {
-        return $this->query()->lazy();
+        return LazyCollection::make(function () {
+            yield from $this->query()->cursor();
+        });
     }
 
     public function query(): Builder
@@ -30,12 +29,12 @@ class ProjectListQuery
         return DB::table('projects')
             ->select([
                 'projects.*',
-                DB::raw(
-                    'GROUP_CONCAT(CONCAT(tasks.id, ",", tasks.name, ",", tasks.description) ORDER BY tasks.id, ",") as tasks'
-                ),
+                'tasks.id as task_id',
+                'tasks.name as task_name',
+                'tasks.description as task_description',
             ])
             ->leftJoin('tasks', 'projects.id', '=', 'tasks.project_id')
-            ->groupBy('projects.id')
-            ->orderBy('projects.id');
+            ->orderBy('projects.id')
+            ->orderBy('task_id');
     }
 }
