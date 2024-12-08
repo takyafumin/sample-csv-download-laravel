@@ -16,7 +16,7 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 - `php artisan db:seed` でサンプルデータを作成する
 - `php artisan ide-helper:generate` で開発用ヘルパーファイルを生成する
 - `php artisan serve` で App サーバを起動する
-- `http://localhost:8000/` にアクセスする
+- `http://localhost:8000/projects/data` にアクセスする
 
 ### ダウンロード機能
 
@@ -31,6 +31,7 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 | `/projects/chunk`          |  105MB | 1600ms | GroupByを使った一括取得クエリ＋Laravel Export with Chunk,          |
 | `/projects/generator`      |  203MB | 1620ms | GroupByを使った一括取得クエリ＋Laravel Export with Generator,      |
 | `/projects/logic`          |  226MB | 1890ms | Joinを使ったデータ冗長クエリ＋Laravel Export with Custom Logic,    |
+| `/project-export/cursor`   |   13MB | 1140ms | LazyCollectionを使った性能改善版                                   |
 
 ## 考慮しておくべきこと
 

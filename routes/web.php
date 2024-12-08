@@ -19,3 +19,5 @@ Route::get('/projects/export', [ProjectExportController::class, 'export'])->name
 Route::get('/projects/chunk', [ProjectExportController::class, 'chunk'])->name('projects.chunk');
 Route::get('/projects/generator', [ProjectExportController::class, 'generator'])->name('projects.generator');
 Route::get('/projects/logic', [ProjectExportController::class, 'logic'])->name('projects.logic');
+
+require __DIR__.'/../packages/ProjectExport/Http/routes/project-export.php';
