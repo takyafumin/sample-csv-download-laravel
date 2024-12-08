@@ -20,17 +20,17 @@ CSVダウンロード機能実装時に考慮しておくべきことを検討�
 
 ### ダウンロード機能
 
-|            URL             | 時間  | メモリ |                                説明                                |
-| -------------------------- | ----: | -----: | ------------------------------------------------------------------ |
-| `/users/download`          |     - |      - | ユーザーデータをCSVでダウンロードする                              |
-| `/projects/data`           |     - |      - | 各ダウンロード処理へのリンクページ                                 |
-| `/projects/download`       |  20MB |  213ms | GroupByを使った一括取得クエリ＋自前CSV作成処理                     |
-| `/projects/download/lazy`  |   5MB |  792ms | GroupByを使った一括取得クエリ＋自前CSV作成処理, LazyCollection使用 |
-| `/projects/download/logic` | 103MB |  458ms | Joinを使ったデータ冗長クエリ＋自前CSV作成処理, LazyCollection使用  |
-| `/projects/export`         |  83MB |  680ms | GroupByを使った一括取得クエリ＋Laravel Export,                      |
-| `/projects/chunk`          | 105MB | 1600ms | GroupByを使った一括取得クエリ＋Laravel Export with Chunk,           |
-| `/projects/generator`      | 203MB | 1620ms | GroupByを使った一括取得クエリ＋Laravel Export with Generator,       |
-| `/projects/logic`          | 226MB | 1890ms | Joinを使ったデータ冗長クエリ＋Laravel Export with Custom Logic,    |
+|            URL             | メモリ |  時間  |                                説明                                |
+| -------------------------- | -----: | -----: | ------------------------------------------------------------------ |
+| `/users/download`          |      - |      - | ユーザーデータをCSVでダウンロードする                              |
+| `/projects/data`           |      - |      - | 各ダウンロード処理へのリンクページ                                 |
+| `/projects/download`       |   20MB |  213ms | GroupByを使った一括取得クエリ＋自前CSV作成処理                     |
+| `/projects/download/lazy`  |    5MB |  792ms | GroupByを使った一括取得クエリ＋自前CSV作成処理, LazyCollection使用 |
+| `/projects/download/logic` |  103MB |  458ms | Joinを使ったデータ冗長クエリ＋自前CSV作成処理, LazyCollection使用  |
+| `/projects/export`         |   83MB |  680ms | GroupByを使った一括取得クエリ＋Laravel Export,                     |
+| `/projects/chunk`          |  105MB | 1600ms | GroupByを使った一括取得クエリ＋Laravel Export with Chunk,          |
+| `/projects/generator`      |  203MB | 1620ms | GroupByを使った一括取得クエリ＋Laravel Export with Generator,      |
+| `/projects/logic`          |  226MB | 1890ms | Joinを使ったデータ冗長クエリ＋Laravel Export with Custom Logic,    |
 
 ## 考慮しておくべきこと
 
